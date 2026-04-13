@@ -14,23 +14,21 @@ class CaesarCipher {
         int shiftValue;
     protected:
         string encode(const string& message) {
-            cout << "";
-        };
+            for (char c : message ) {
+                if (isalpha(c)) {
+                    char base;
+                    if (islower(c)) {
+                        base = 'a';
 
-        for (char c : message ) {
-            if (isalpha(c)) {
-                char base;
-                if (islower(c)) {
-                    base = 'a';
-
-                } else {
-                    base = 'A';
+                    } else {
+                        base = 'A';
+                    }
+                }  result += char((c - base + shiftValue) % 26 + base);
+                else {
+                    result += c;// this will leave non letters unchanged 
                 }
-            }  result += char((c - base + shiftValue) % 26 + base);
-            else {
-                result += c;// this will leave non letters unchanged 
+                return result;
             }
-            return result;
         }
 
     public:
