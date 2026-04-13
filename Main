@@ -11,11 +11,29 @@ using namespace std;
 class CaesarCipher {
     private:
         int shiftValue;
+    protected:
+        int string encode(const string& message) {
+            cout << "";
+        }
+    public:
+        void setShiftValue(int value) {
+            cout << "";
+        }
+        string decode(const string& message) {
+            cout << "";
+        }
+};
+
+class Rot13Cipher: public CaesarCipher {
+    public:
+        Rot13Cipher() {
+            cout << "";
+        }
 };
 
 int main()
 {
-    cout << "Hello World";
+    cout << "";
 
     return 0;
 }
