@@ -8,6 +8,11 @@ Names: Ethan Sovereign, Donovan Stukes, Giovanni Vega, Mohammed Ahmed, Victor Nz
 #include <iostream>
 using namespace std;
 
+class CaesarCipher {
+    private:
+        int shiftValue;
+};
+
 int main()
 {
     cout << "Hello World";
