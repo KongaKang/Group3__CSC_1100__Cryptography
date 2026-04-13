@@ -94,7 +94,7 @@ int main()
             while (decodeNow != "Yes" or decodeNow != "No" or decodeNow != "yes" or decodeNow != "no" or decodeNow != "y" or decodeNow != "n") {
                 cin >> decodeNow;
                 if (decodeNow == "Yes" or decodeNow != "yes" or decodeNow != "y") {
-                    cout << "Enter your guess for the shift value (1-13) to decode the message"
+                    cout << "Enter your guess for the shift value (1-13) to decode the message";
                 }
                 else if (decodeNow == "No" or decodeNow != "no" or decodeNow != "n") {
                     cout << "You have chosen to not decode the message.";
