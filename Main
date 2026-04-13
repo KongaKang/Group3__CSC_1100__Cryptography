@@ -13,9 +13,9 @@ class CaesarCipher {
     private:
         int shiftValue;
     protected:
-        int string encode(const string& message) {
+        string encode(const string& message) {
             cout << "";
-        }
+        };
 
         for (char c : message ) {
             if (isalpha(c)) {
@@ -30,7 +30,9 @@ class CaesarCipher {
             else {
                 result += c;// this will leave non letters unchanged 
             }
-        }  return result; 
+            return result;
+        }
+
     public:
         void setShiftValue(int value) {
             srand(time(0));
@@ -57,7 +59,23 @@ class Rot13Cipher: public CaesarCipher {
 
 int main()
 {
-    cout << "";
+    string userChoice;
+    cout << "Would you like to encrypt or decrypt a message?" << endl;
+    cout << "Input \"1\" to encrypt a message, or \"2\" to decrypt a message." << endl;
+
+    while (userChoice != "1" and userChoice != "2") {
+        cin >> userChoice;
+
+        if (userChoice == "1") {
+            cout << "You have chosen to encrypt a message." << endl;
+        }
+        else if (userChoice == "2") {
+            cout << "You have chosen to decrypt a message." << endl;
+        }
+        else {
+            cout << "Please enter \"1\" to encrypt a message, or \"2\" to decrypt a message. ";
+        }
+    }
 
     return 0;
 }
