@@ -10,8 +10,9 @@ Braylen T
 using namespace std;
 
 class CaesarCipher {
+    srand(time(0));
     private:
-        int shiftValue;
+        int shiftValue = rand() % 26;
     protected:
         int string encode(const string& message) {
             cout << "";
