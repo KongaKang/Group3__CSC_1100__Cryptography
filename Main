@@ -2,10 +2,11 @@
 
 Cryptography Quest 3
 Names: Ethan Sovereign, Donovan Stukes, Giovanni Vega, Mohammed Ahmed, Victor Nzekwe, Nithin Suresh, Kenny Chanya
-
+Braylen T, 
 *******************************************************************************/
 
 #include <iostream>
+#include <string> 
 using namespace std;
 
 class CaesarCipher {
@@ -15,14 +16,37 @@ class CaesarCipher {
         int string encode(const string& message) {
             cout << "";
         }
+
+        for (char c : message ) {
+            if (isalpha(c)) {
+                char base;
+                if (islower(c)) {
+                    base = 'a';
+
+                } else {
+                    base = 'A';
+                }
+            }  result += char((c - base + shiftValue) % 26 + base);
+            else {
+                result += c;// this will leave non letters unchanged 
+            }
+        }  return result; 
     public:
         void setShiftValue(int value) {
-            cout << "";
+           shiftValue = value % 26;
         }
         string decode(const string& message) {
-            cout << "";
+           int oldShift = shiftValue;
+
+          shiftValue = (26 - shiftValue) % 26;
+
+          string decode = encode (message);
+          shiftValue = oldShift;
+          return decode;
+
         }
 };
+
 
 class Rot13Cipher: public CaesarCipher {
     public:
