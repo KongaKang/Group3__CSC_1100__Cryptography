@@ -76,15 +76,17 @@ int main()
             cin >> keyPhrase;
             // Ask the user for a shift value
             cout << "Enter a shift value to encode the message accordingly: ";
-            while (userShiftValue < 0 or userShiftValue > 26) {
+            while (userShiftValue < 0 or userShiftValue > 14) {
                 cin >> userShiftValue;
-                if (userShiftValue > 0 or userShiftValue < 26) {
+                if (userShiftValue > 0 or userShiftValue < 14) {
                     cout << "You have chosen " << userShiftValue << " as your shift value." << endl;
                 }
                 else {
-                    cout << "Please enter a shift value between 1 and 25. ";
+                    cout << "Please enter a shift value between 1 and 13. ";
                 }
             }
+
+            // Generate the encoded message and give it to the user
 
             // Ask the user if they wish to decrypt the recently encoded message
             string decodeNow = "Maybe";
