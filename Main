@@ -26,6 +26,8 @@ class CaesarCipher {
                         base = 'A';
                     }
                     encodedMessage += char((c - base + shiftValue) % 26 + base);
+                }
+                
                 else {
                     encodedMessage += c;// this will leave non letters unchanged 
                 }
