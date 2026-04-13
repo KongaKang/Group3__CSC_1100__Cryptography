@@ -51,7 +51,7 @@ class CaesarCipher {
 class Rot13Cipher: public CaesarCipher {
     public:
         Rot13Cipher() {
-            cout << "";
+            setShiftValue(13);
         }
 };
 
