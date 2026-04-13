@@ -37,14 +37,13 @@ class CaesarCipher {
             shiftValue = rand() value % 26;
         }
         string decode(const string& message) {
-           int oldShift = shiftValue;
+            int oldShift = shiftValue;
 
-          shiftValue = (26 - shiftValue) % 26;
+            shiftValue = (26 - shiftValue) % 26;
 
-          string decode = encode (message);
-          shiftValue = oldShift;
-          return decode;
-
+            string decode = encode (message);
+            shiftValue = oldShift;
+            return decode;
         }
 };
 
