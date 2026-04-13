@@ -14,20 +14,22 @@ class CaesarCipher {
         int shiftValue;
     protected:
         string encode(const string& message) {
+            string encodedMessage;
+
             for (char c : message ) {
                 if (isalpha(c)) {
                     char base;
                     if (islower(c)) {
                         base = 'a';
-
-                    } else {
+                    }
+                    else {
                         base = 'A';
                     }
-                }  result += char((c - base + shiftValue) % 26 + base);
+                    encodedMessage += char((c - base + shiftValue) % 26 + base);
                 else {
-                    result += c;// this will leave non letters unchanged 
+                    encodedMessage += c;// this will leave non letters unchanged 
                 }
-                return result;
+                return encodedMessage;
             }
         }
 
