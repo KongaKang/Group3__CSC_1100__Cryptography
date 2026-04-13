@@ -60,7 +60,7 @@ int main()
 {
     string userChoice;
     string keyPhrase;
-    int userShiftValue;
+    int userShiftValue = -1;
 
     cout << "Would you like to encrypt or decrypt a message?" << endl;
     cout << "Input \"1\" to encrypt a message, or \"2\" to decrypt a message. " << endl;
@@ -73,10 +73,10 @@ int main()
             cout << "Enter the message to be encoded: ";
             cin >> keyPhrase;
             cout << "Enter a shift value to encode the message accordingly: ";
-            while (userShiftValue > 0 and userShiftValue < 26) {
-                cin >> userShiftValue
-                if (userShiftValue > 0 and userShiftValue < 26) {
-                    cout << "You have chosen " << userShiftValue << "as your shift value." << endl;
+            while (userShiftValue < 0 or userShiftValue > 26) {
+                cin >> userShiftValue;
+                if (userShiftValue > 0 or userShiftValue < 26) {
+                    cout << "You have chosen " << userShiftValue << " as your shift value." << endl;
                 }
                 else {
                     cout << "Please enter a shift value between 1 and 25. ";
