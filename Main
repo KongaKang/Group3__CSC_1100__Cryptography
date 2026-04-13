@@ -58,10 +58,12 @@ class Rot13Cipher: public CaesarCipher {
 
 int main()
 {
+    // Initialize variables
     string userChoice;
     string keyPhrase;
     int userShiftValue = -1;
 
+    // Ask the user if they are going to encrypt or decrpt a message
     cout << "Would you like to encrypt or decrypt a message?" << endl;
     cout << "Input \"1\" to encrypt a message, or \"2\" to decrypt a message. " << endl;
 
@@ -72,6 +74,7 @@ int main()
             cout << "You have chosen to encrypt a message." << endl;
             cout << "Enter the message to be encoded: ";
             cin >> keyPhrase;
+            // Ask the user for a shift value
             cout << "Enter a shift value to encode the message accordingly: ";
             while (userShiftValue < 0 or userShiftValue > 26) {
                 cin >> userShiftValue;
