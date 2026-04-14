@@ -110,19 +110,56 @@ int main()
                 // Ask the user if they wish to decodde the message now
                 if (decodeNow == "Yes" or decodeNow == "yes" or decodeNow == "y") {
                     int decodeGuess = -1;
-                    // Prompt the user for their shift value guess.
-                    cout << "Enter your guess for the shift value (1-13) to decode the message ";
-                    while (decodeGuess < 0 or decodeGuess > 14) {
-                        cin >> decodeGuess;
 
-                        if (decodeGuess > 0 or decodeGuess < 14) {
-                            cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << "):" << endl;
-                            currentEncryption.setShiftValue(decodeGuess);
-                            cout << "Encoded message: " << hiddenMessage << endl;
-                            cout << "Decoded message: " << currentEncryption.decode(keyPhrase) << endl;
-                        }
-                        else {
-                            cout << "Please enter a value between 1 and 13 ";
+                    // Prompt the user for their shift value guess.
+                    bool isMessageDecoded = false;
+                    while(isMessageDecoded == false) {
+                        cout << "Enter your guess for the shift value (1-13) to decode the message ";
+                        while (decodeGuess < 0 or decodeGuess > 14) {
+                            cin >> decodeGuess;
+
+                            if (decodeGuess > 0 or decodeGuess < 14) {
+                                cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << "):" << endl;
+                                currentEncryption.setShiftValue(decodeGuess);
+                                cout << "Encoded message: " << hiddenMessage << endl;
+                                cout << "Decoded message: " << currentEncryption.decode(keyPhrase) << endl;
+
+                                // Ask the user if the decoded message is correct
+                                string isMessageCorrect = "Maybe";
+                                cout << "Is the decoded message correct?\nInput \"Yes\" or \"No\" ";
+                                while (isMessageCorrect != "Yes" or isMessageCorrect != "yes" or isMessageCorrect != "y"
+                            or isMessageCorrect != "No" or isMessageCorrect != "no" or isMessageCorrect != "n")
+                                    if (isMessageCorrect == "Yes" or isMessageCorrect == "yes" or isMessageCorrect == "y") {
+                                        isMessageDecoded = true;
+                                        cout << "Congratulations! You decoded the message correctly." << endl;
+                                        cout << "Do you want to encode a new message?\nInput \"Yes\" or \"No\" ";
+                                    }
+                                    // Ask the user if they wish to make another attempt at the decryption
+                                    else if (isMessageCorrect == "No" or isMessageCorrect == "no" or isMessageCorrect == "n") {
+                                        string anotherAttempt;
+                                        cout << "Do you want to try with a different shift value? \nInput \"Yes\" or \"No\" ";
+                                        while (anotherAttempt != "Yes" or anotherAttempt != "yes" or anotherAttempt != "y"
+                                    or anotherAttempt != "No" or anotherAttempt != "no" or anotherAttempt != "n") {
+                                            cin >> anotherAttempt;
+                                            if (anotherAttempt == "Yes" or anotherAttempt == "yes" or anotherAttempt == "y") {
+                                                isMessageDecoded = false;
+                                            }
+                                            else if (anotherAttempt == "No" or anotherAttempt == "no" or anotherAttempt == "n") {
+                                                isMessageDecoded = true;
+                                                cout << "";
+                                            }
+                                            else {
+                                                cout << "Please enter wither \"Yes\" or \"No\" ";
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        cout << "Please enter either \"Yes\" or \"No\" ";
+                                    }
+                            }
+                            else {
+                                cout << "Please enter a value between 1 and 13 ";
+                            }
                         }
                     }
                 }
