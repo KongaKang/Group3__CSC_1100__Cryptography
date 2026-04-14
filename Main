@@ -112,51 +112,54 @@ int main()
                 
             }
         }
+
         else if (userChoice == "2") {
             cout << "You have chosen to decrypt a message." << endl;
             cin.ignore();
-cout << "Enter the captured (encoded) message: ";
-getline(cin, keyPhrase);
+            cout << "Enter the captured (encoded) message: ";
+            getline(cin, keyPhrase);
+
+            bool correct = false;
+
+            while (!correct) {
+                int guess;
+                cout << "Enter your guess for the shift value (1-13): ";
+                cin >> guess;
+
+                CaesarCipher* decoder = new CaesarCipher();
+                decoder->setShiftValue(guess);
+
+                string attempt = decoder->decode(keyPhrase);
+
+                cout << "Decoded message attempt: " << attempt << endl;
+
+                delete decoder;
+
+                string isCorrect;
+                cout << "Is the decoded message correct? (Yes/No): ";
+                cin >> isCorrect;
+
+                if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
+                    cout << "Great job! You decoded the message.\n";
+                    correct = true;
+                }
+                else {
+                    string tryAgain;
+                    cout << "Try another shift value? (Yes/No): ";
+                    cin >> tryAgain;
+
+                    if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
+                        cout << "Returning to main menu...\n";
+                        break;
+                    }
+                }
+            }
         }
+
         else {
             cout << "Please enter \"1\" to encrypt a message, or \"2\" to decrypt a message. ";
         }
     }
-bool correct = false;
-
-    while (!correct) {
-        int guess;
-        cout << "Enter your guess for the shift value (1-13): ";
-        cin >> guess;
-
-        CaesarCipher* decoder = new CaesarCipher();
-        decoder->setShiftValue(guess);
-
-        string attempt = decoder->decode(keyPhrase);
-
-        cout << "Decoded message attempt: " << attempt << endl;
-
-        delete decoder;
-
-        string isCorrect;
-        cout << "Is the decoded message correct? (Yes/No): ";
-        cin >> isCorrect;
-
-        if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
-            cout << "Great job! You decoded the message.\n";
-            correct = true;
-        }
-        else {
-            string tryAgain;
-            cout << "Try another shift value? (Yes/No): ";
-            cin >> tryAgain;
-
-            if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
-                cout << "Returning to main menu...\n";
-                break;
-            }
-        }
-    }
-
+    
     return 0;
 }
