@@ -51,6 +51,9 @@ class CaesarCipher {
             shiftValue = oldShift;
             return decoded;
         }
+        string encrypt(const string& message) {
+            return encode(message);
+        }
 };
 
 
@@ -94,7 +97,7 @@ int main()
             // Generate the encoded message and give it to the user
             CaesarCipher currentEncryption;
             currentEncryption.setShiftValue(userShiftValue);
-            string hiddenMessage = currentEncryption.encode(keyPhrase);
+            string hiddenMessage = currentEncryption.encrypt(keyPhrase);
 
             // Ask the user if they wish to decrypt the recently encoded message
             string decodeNow = "Maybe";
