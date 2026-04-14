@@ -109,7 +109,10 @@ int main()
                         cin >> decodeGuess;
 
                         if (decodeGuess > 0 or decodeGuess < 14) {
-                            cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << ")" << endl;
+                            cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << "):" << endl;
+                            string newDecryption;
+                            cout << "Encoded message: " << currentEncryption << endl;
+                            cout << "Decoded message: " << newDecryption << endl;
                         }
                         else {
                             cout << "Please enter a value between 1 and 13 ";
