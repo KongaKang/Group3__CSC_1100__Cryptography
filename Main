@@ -102,7 +102,19 @@ int main()
                 cin >> decodeNow;
                 // Ask the user if they wish to decodde the message now
                 if (decodeNow == "Yes" or decodeNow != "yes" or decodeNow != "y") {
+                    int decodeGuess = -1;
+                    // Prompt the user for their shift value guess.
                     cout << "Enter your guess for the shift value (1-13) to decode the message ";
+                    while (decodeGuess < 0 or decodeGuess > 14) {
+                        cin >> decodeGuess;
+
+                        if (decodeGuess > 0 or decodeGuess < 14) {
+                            cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << ")" << endl;
+                        }
+                        else {
+                            cout << "Please enter a value between 1 and 13 ";
+                        }
+                    }
                 }
                 else if (decodeNow == "No" or decodeNow != "no" or decodeNow != "n") {
                     cout << "You have chosen to not decode the message.";
