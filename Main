@@ -129,10 +129,10 @@ int main()
                                 cout << "Is the decoded message correct?\nInput \"Yes\" or \"No\" ";
                                 while (isMessageCorrect != "Yes" or isMessageCorrect != "yes" or isMessageCorrect != "y"
                             or isMessageCorrect != "No" or isMessageCorrect != "no" or isMessageCorrect != "n")
+                                    cin >> isMessageCorrect;
                                     if (isMessageCorrect == "Yes" or isMessageCorrect == "yes" or isMessageCorrect == "y") {
                                         isMessageDecoded = true;
                                         cout << "Congratulations! You decoded the message correctly." << endl;
-                                        cout << "Do you want to encode a new message?\nInput \"Yes\" or \"No\" ";
                                     }
                                     // Ask the user if they wish to make another attempt at the decryption
                                     else if (isMessageCorrect == "No" or isMessageCorrect == "no" or isMessageCorrect == "n") {
