@@ -125,7 +125,7 @@ int main()
                                 cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << "):" << endl;
                                 currentEncryption.setShiftValue(decodeGuess);
                                 cout << "Encoded message: " << hiddenMessage << endl;
-                                cout << "Decoded message: " << currentEncryption.decode(keyPhrase) << endl;
+                                cout << "Decoded message: " << currentEncryption.decode(hiddenMessage) << endl;
 
                                 // Ask the user if the decoded message is correct
                                 string isMessageCorrect = "Maybe";
