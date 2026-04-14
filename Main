@@ -34,7 +34,7 @@ class CaesarCipher {
                     encodedMessage += c;// this will leave non letters unchanged 
                 }
             }
-                return encodedMessage;
+            return encodedMessage;
         }
 
     public:
@@ -149,7 +149,7 @@ int main()
                     cin >> tryAgain;
 
                     if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
-                        cout << "Returning to main menu...\n";
+                        cout << "Exiting...\n";
                         break;
                     }
                 }
@@ -160,6 +160,6 @@ int main()
             cout << "Please enter \"1\" to encrypt a message, or \"2\" to decrypt a message. ";
         }
     }
-    
+
     return 0;
 }
