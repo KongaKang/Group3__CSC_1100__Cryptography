@@ -243,31 +243,73 @@ int main()
                     cin >> guess;
                 }
 
-                CaesarCipher* decoder = new CaesarCipher();
-                decoder->setShiftValue(guess);
+                if (guess < 13) {
+                    cout << "Decoding message using Caesar Cipher (shift value " << guess << " )" << endl;
 
-                string attempt = decoder->decode(keyPhrase);
+                    CaesarCipher* decoder = new CaesarCipher();
+                    decoder->setShiftValue(guess);
 
-                cout << "Decoded message attempt: " << attempt << endl;
+                    string attempt = decoder->decode(keyPhrase);
 
-                delete decoder;
+                    cout << "Encoded message: " << keyPhrase << endl;
 
-                string isCorrect;
-                cout << "Is the decoded message correct? (Yes/No): ";
-                cin >> isCorrect;
+                    cout << "Decoded message attempt: " << attempt << endl;
 
-                if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
+                    delete decoder;
+
+                    string isCorrect;
+                    cout << "Is the decoded message correct? (Yes/No): ";
+                    cin >> isCorrect;
+
+                    if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
                     cout << "Great job! You decoded the message.\n";
                     correct = true;
-                }
-                else {
-                    string tryAgain;
-                    cout << "Try another shift value? (Yes/No): ";
-                    cin >> tryAgain;
+                    }
+                    else {
+                        string tryAgain;
+                        cout << "Try another shift value? (Yes/No): ";
+                        cin >> tryAgain;
 
-                    if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
-                        cout << "Exiting...\n";
-                        break;
+                        if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
+                            cout << "Exiting...\n";
+                            break;
+                        }
+                    }
+                }
+
+                else {
+                    cout << "Decoding message using Rot13 Cipher (shift value " << guess << " )" << endl;
+
+                    Rot13Cipher rottedCipher;
+
+                    CaesarCipher* decoder = new CaesarCipher();
+                    decoder->setShiftValue(guess);
+
+                    string attempt = decoder->decode(keyPhrase);
+
+                    cout << "Encoded message: " << keyPhrase << endl;
+
+                    cout << "Decoded message attempt: " << attempt << endl;
+
+                    delete decoder;
+
+                    string isCorrect;
+                    cout << "Is the decoded message correct? (Yes/No): ";
+                    cin >> isCorrect;
+
+                    if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
+                    cout << "Great job! You decoded the message.\n";
+                    correct = true;
+                    }
+                    else {
+                        string tryAgain;
+                        cout << "Try another shift value? (Yes/No): ";
+                        cin >> tryAgain;
+
+                        if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
+                            cout << "Exiting...\n";
+                            break;
+                        }
                     }
                 }
             }
