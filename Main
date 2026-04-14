@@ -14,8 +14,10 @@ class CaesarCipher {
         int shiftValue;
     protected:
         string encode(const string& message) {
+            // Initialize the value which will store the encoded message
             string encodedMessage;
 
+            // Encrypt the message
             for (char c : message ) {
                 if (isalpha(c)) {
                     char base;
@@ -89,6 +91,7 @@ int main()
             }
 
             // Generate the encoded message and give it to the user
+            CaesarCipher currentEncryption;
 
             // Ask the user if they wish to decrypt the recently encoded message
             string decodeNow = "Maybe";
