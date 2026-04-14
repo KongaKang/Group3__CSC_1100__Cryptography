@@ -78,247 +78,243 @@ int main()
     cout << "Input \"1\" to encrypt a message, or \"2\" to decrypt a message. " << endl;
 
     while (userChoice != "1" and userChoice != "2") {
-        cin >> userChoice;
-
-        if (userChoice == "1") {
-            cout << "You have chosen to encrypt a message." << endl;
-            cout << "Enter the message to be encoded: ";
-            cin.ignore();
-            getline(cin, keyPhrase);
-            // Ask the user for a shift value
-            cout << "Enter a shift value to encode the message accordingly: ";
-            while (userShiftValue < 0 or userShiftValue > 14) {
-                cin >> userShiftValue;
-                if (userShiftValue >= 1 && userShiftValue <= 13) {
-                    cout << "You have chosen " << userShiftValue << " as your shift value." << endl;
-                }
-                else {
-                    cout << "Please enter a shift value between 1 and 13. ";
-                }
-            }
-
-            // Generate the encoded message and give it to the user
-            CaesarCipher currentEncryption;
-            currentEncryption.setShiftValue(userShiftValue);
-            string hiddenMessage = currentEncryption.encrypt(keyPhrase);
-
-            // Ask the user if they wish to decrypt the recently encoded message
-            string decodeNow = "Maybe";
-            cout <<"Do you want to decode the recently encoded message?\nInput \"Yes\" or \"No\" ";
-           while (decodeNow != "Yes" && decodeNow != "No" &&
-        decodeNow != "yes" && decodeNow != "no" &&
-        decodeNow != "y"   && decodeNow != "n") {
-                cin >> decodeNow;
-                // Ask the user if they wish to decodde the message now
-                if (decodeNow == "Yes" or decodeNow == "yes" or decodeNow == "y") {
-                    cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
-
-                    // Prompt the user for their shift value guess.
-                    bool isMessageDecoded = false;
-                    while(isMessageDecoded == false) {
-
-                        //Prompt the user for their desired shift value
-                        int decodeGuess = -1;
-                        cout << "Enter your guess for the shift value (1-13) to decode the message ";
-                        while (decodeGuess < 0 or decodeGuess > 14) {
-                            cin >> decodeGuess;
-
-                            if (decodeGuess > 0 and decodeGuess < 13) {
-                                cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << "):" << endl;
-                                currentEncryption.setShiftValue(decodeGuess);
-                                cout << "Encoded message: " << hiddenMessage << endl;
-                                cout << "Decoded message: " << currentEncryption.decode(hiddenMessage) << endl;
-
-                                // Ask the user if the decoded message is correct
-                                string isMessageCorrect = "Maybe";
-                                cout << "Is the decoded message correct?\nInput \"Yes\" or \"No\" ";
-                                while (isMessageCorrect != "Yes" and isMessageCorrect != "yes" and isMessageCorrect != "y"
-                            and isMessageCorrect != "No" and isMessageCorrect != "no" and isMessageCorrect != "n") {
-                                    cin >> isMessageCorrect;
-                                    if (isMessageCorrect == "Yes" or isMessageCorrect == "yes" or isMessageCorrect == "y") {
-                                        isMessageDecoded = true;
-                                        cout << "Congratulations! You decoded the message correctly." << endl;
-                                        break;
-                                    }
-                                    // Ask the user if they wish to make another attempt at the decryption
-                                    else if (isMessageCorrect == "No" or isMessageCorrect == "no" or isMessageCorrect == "n") {
-                                        string anotherAttempt;
-                                        cout << "Do you want to try with a different shift value? \nInput \"Yes\" or \"No\" ";
-                                        while (anotherAttempt != "Yes" and anotherAttempt != "yes" and anotherAttempt != "y"
-                                    and anotherAttempt != "No" and anotherAttempt != "no" and anotherAttempt != "n") {
-                                            cin >> anotherAttempt;
-                                            if (anotherAttempt == "Yes" or anotherAttempt == "yes" or anotherAttempt == "y") {
-                                                break;
-                                            }
-                                            else if (anotherAttempt == "No" or anotherAttempt == "no" or anotherAttempt == "n") {
-                                                cout << "\nUnderstood. Exiting...";
-                                                isMessageDecoded = true;
-                                                break;
-                                            }
-                                            else {
-                                                cout << "Please enter either \"Yes\" or \"No\" ";
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        cout << "Please enter either \"Yes\" or \"No\" ";
-                                    }
-                                }
-                            }
-
-                            else if (decodeGuess == 13) {
-                                cout << "Decoding message using Rot13 Cipher (shift value 13)" << endl;
-                                Rot13Cipher rottenCipher;
-                                cout << "Encoded message: " << hiddenMessage << endl;
-                                cout << "Decoded message: " << currentEncryption.decode(hiddenMessage) << endl;
-
-                                // Ask the user if the decoded message is correct
-                                string isMessageCorrect = "Maybe";
-                                cout << "Is the decoded message correct?\nInput \"Yes\" or \"No\" ";
-                                while (isMessageCorrect != "Yes" and isMessageCorrect != "yes" and isMessageCorrect != "y"
-                            and isMessageCorrect != "No" and isMessageCorrect != "no" and isMessageCorrect != "n") {
-                                    cin >> isMessageCorrect;
-                                    if (isMessageCorrect == "Yes" or isMessageCorrect == "yes" or isMessageCorrect == "y") {
-                                        isMessageDecoded = true;
-                                        cout << "Congratulations! You decoded the message correctly." << endl;
-                                        break;
-                                    }
-                                    // Ask the user if they wish to make another attempt at the decryption
-                                    else if (isMessageCorrect == "No" or isMessageCorrect == "no" or isMessageCorrect == "n") {
-                                        string anotherAttempt;
-                                        cout << "Do you want to try with a different shift value? \nInput \"Yes\" or \"No\" ";
-                                        while (anotherAttempt != "Yes" and anotherAttempt != "yes" and anotherAttempt != "y"
-                                    and anotherAttempt != "No" and anotherAttempt != "no" and anotherAttempt != "n") {
-                                            cin >> anotherAttempt;
-                                            if (anotherAttempt == "Yes" or anotherAttempt == "yes" or anotherAttempt == "y") {
-                                                break;
-                                            }
-                                            else if (anotherAttempt == "No" or anotherAttempt == "no" or anotherAttempt == "n") {
-                                                cout << "\nUnderstood. Exiting...";
-                                                isMessageDecoded = true;
-                                                break;
-                                            }
-                                            else {
-                                                cout << "Please enter either \"Yes\" or \"No\" ";
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        cout << "Please enter either \"Yes\" or \"No\" ";
-                                    }
-                                }
-                            }
-
-                            else {
-                                cout << "Please enter a value between 1 and 13 ";
-                            }
-                        }
-                    }
-                }
-                else if (decodeNow == "No" or decodeNow == "no" or decodeNow == "n") {
-                    cout << "You have chosen to not decode the message.";
-                }
-                else {
-                    cout << "Please enter \"Yes\" or \"No\"";
-                }
-                
-            }
-        }
-
-        else if (userChoice == "2") {
-            cout << "You have chosen to decrypt a message." << endl;
-            cin.ignore();
-            cout << "Enter the captured (encoded) message: ";
-            getline(cin, keyPhrase);
-
-            bool correct = false;
-
-            while (!correct) {
-                int guess;
-                cout << "Enter your guess for the shift value (1-13): ";
-                cin >> guess;
-                
-                while(guess < 1 || guess > 13) {
-                    cout << "Invalid input. Enter a number between 1 and 13: ";
-                    cin >> guess;
-                }
-
-                if (guess < 13) {
-                    cout << "Decoding message using Caesar Cipher (shift value " << guess << " )" << endl;
-
-                    CaesarCipher* decoder = new CaesarCipher();
-                    decoder->setShiftValue(guess);
-
-                    string attempt = decoder->decode(keyPhrase);
-
-                    cout << "Encoded message: " << keyPhrase << endl;
-
-                    cout << "Decoded message attempt: " << attempt << endl;
-
-                    delete decoder;
-
-                    string isCorrect;
-                    cout << "Is the decoded message correct? (Yes/No): ";
-                    cin >> isCorrect;
-
-                    if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
-                    cout << "Great job! You decoded the message.\n";
-                    correct = true;
-                    }
-                    else {
-                        string tryAgain;
-                        cout << "Try another shift value? (Yes/No): ";
-                        cin >> tryAgain;
-
-                        if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
-                            cout << "Exiting...\n";
-                            break;
-                        }
-                    }
-                }
-
-                else {
-                    cout << "Decoding message using Rot13 Cipher (shift value " << guess << " )" << endl;
-
-                    Rot13Cipher rottedCipher;
-
-                    CaesarCipher* decoder = new CaesarCipher();
-                    decoder->setShiftValue(guess);
-
-                    string attempt = decoder->decode(keyPhrase);
-
-                    cout << "Encoded message: " << keyPhrase << endl;
-
-                    cout << "Decoded message attempt: " << attempt << endl;
-
-                    delete decoder;
-
-                    string isCorrect;
-                    cout << "Is the decoded message correct? (Yes/No): ";
-                    cin >> isCorrect;
-
-                    if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
-                    cout << "Great job! You decoded the message.\n";
-                    correct = true;
-                    }
-                    else {
-                        string tryAgain;
-                        cout << "Try another shift value? (Yes/No): ";
-                        cin >> tryAgain;
-
-                        if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
-                            cout << "Exiting...\n";
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        else {
             cout << "Please enter \"1\" to encrypt a message, or \"2\" to decrypt a message. ";
+            cin >> userChoice;
+        }
+
+    if (userChoice == "1") {
+        cout << "You have chosen to encrypt a message." << endl;
+        cout << "Enter the message to be encoded: ";
+        cin.ignore();
+        getline(cin, keyPhrase);
+        // Ask the user for a shift value
+        cout << "Enter a shift value to encode the message accordingly: ";
+        while (userShiftValue < 0 or userShiftValue > 14) {
+            cin >> userShiftValue;
+            if (userShiftValue >= 1 && userShiftValue <= 13) {
+                cout << "You have chosen " << userShiftValue << " as your shift value." << endl;
+            }
+            else {
+                cout << "Please enter a shift value between 1 and 13. ";
+            }
+        }
+
+        // Generate the encoded message and give it to the user
+        CaesarCipher currentEncryption;
+        currentEncryption.setShiftValue(userShiftValue);
+        string hiddenMessage = currentEncryption.encrypt(keyPhrase);
+
+        // Ask the user if they wish to decrypt the recently encoded message
+        string decodeNow = "Maybe";
+        cout <<"Do you want to decode the recently encoded message?\nInput \"Yes\" or \"No\" ";
+        while (decodeNow != "Yes" && decodeNow != "No" &&
+    decodeNow != "yes" && decodeNow != "no" &&
+    decodeNow != "y"   && decodeNow != "n") {
+            cin >> decodeNow;
+            // Ask the user if they wish to decodde the message now
+            if (decodeNow == "Yes" or decodeNow == "yes" or decodeNow == "y") {
+                cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
+
+                // Prompt the user for their shift value guess.
+                bool isMessageDecoded = false;
+                while(isMessageDecoded == false) {
+
+                    //Prompt the user for their desired shift value
+                    int decodeGuess = -1;
+                    cout << "Enter your guess for the shift value (1-13) to decode the message ";
+                    while (decodeGuess < 0 or decodeGuess > 14) {
+                        cin >> decodeGuess;
+
+                        if (decodeGuess > 0 and decodeGuess < 13) {
+                            cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << "):" << endl;
+                            currentEncryption.setShiftValue(decodeGuess);
+                            cout << "Encoded message: " << hiddenMessage << endl;
+                            cout << "Decoded message: " << currentEncryption.decode(hiddenMessage) << endl;
+
+                            // Ask the user if the decoded message is correct
+                            string isMessageCorrect = "Maybe";
+                            cout << "Is the decoded message correct?\nInput \"Yes\" or \"No\" ";
+                            while (isMessageCorrect != "Yes" and isMessageCorrect != "yes" and isMessageCorrect != "y"
+                        and isMessageCorrect != "No" and isMessageCorrect != "no" and isMessageCorrect != "n") {
+                                cin >> isMessageCorrect;
+                                if (isMessageCorrect == "Yes" or isMessageCorrect == "yes" or isMessageCorrect == "y") {
+                                    isMessageDecoded = true;
+                                    cout << "Congratulations! You decoded the message correctly." << endl;
+                                    break;
+                                }
+                                // Ask the user if they wish to make another attempt at the decryption
+                                else if (isMessageCorrect == "No" or isMessageCorrect == "no" or isMessageCorrect == "n") {
+                                    string anotherAttempt;
+                                    cout << "Do you want to try with a different shift value? \nInput \"Yes\" or \"No\" ";
+                                    while (anotherAttempt != "Yes" and anotherAttempt != "yes" and anotherAttempt != "y"
+                                and anotherAttempt != "No" and anotherAttempt != "no" and anotherAttempt != "n") {
+                                        cin >> anotherAttempt;
+                                        if (anotherAttempt == "Yes" or anotherAttempt == "yes" or anotherAttempt == "y") {
+                                            break;
+                                        }
+                                        else if (anotherAttempt == "No" or anotherAttempt == "no" or anotherAttempt == "n") {
+                                            cout << "\nUnderstood. Exiting...";
+                                            isMessageDecoded = true;
+                                            break;
+                                        }
+                                        else {
+                                            cout << "Please enter either \"Yes\" or \"No\" ";
+                                        }
+                                    }
+                                }
+                                else {
+                                    cout << "Please enter either \"Yes\" or \"No\" ";
+                                }
+                            }
+                        }
+
+                        else if (decodeGuess == 13) {
+                            cout << "Decoding message using Rot13 Cipher (shift value 13)" << endl;
+                            Rot13Cipher rottenCipher;
+                            cout << "Encoded message: " << hiddenMessage << endl;
+                            cout << "Decoded message: " << currentEncryption.decode(hiddenMessage) << endl;
+
+                            // Ask the user if the decoded message is correct
+                            string isMessageCorrect = "Maybe";
+                            cout << "Is the decoded message correct?\nInput \"Yes\" or \"No\" ";
+                            while (isMessageCorrect != "Yes" and isMessageCorrect != "yes" and isMessageCorrect != "y"
+                        and isMessageCorrect != "No" and isMessageCorrect != "no" and isMessageCorrect != "n") {
+                                cin >> isMessageCorrect;
+                                if (isMessageCorrect == "Yes" or isMessageCorrect == "yes" or isMessageCorrect == "y") {
+                                    isMessageDecoded = true;
+                                    cout << "Congratulations! You decoded the message correctly." << endl;
+                                    break;
+                                }
+                                // Ask the user if they wish to make another attempt at the decryption
+                                else if (isMessageCorrect == "No" or isMessageCorrect == "no" or isMessageCorrect == "n") {
+                                    string anotherAttempt;
+                                    cout << "Do you want to try with a different shift value? \nInput \"Yes\" or \"No\" ";
+                                    while (anotherAttempt != "Yes" and anotherAttempt != "yes" and anotherAttempt != "y"
+                                and anotherAttempt != "No" and anotherAttempt != "no" and anotherAttempt != "n") {
+                                        cin >> anotherAttempt;
+                                        if (anotherAttempt == "Yes" or anotherAttempt == "yes" or anotherAttempt == "y") {
+                                            break;
+                                        }
+                                        else if (anotherAttempt == "No" or anotherAttempt == "no" or anotherAttempt == "n") {
+                                            cout << "\nUnderstood. Exiting...";
+                                            isMessageDecoded = true;
+                                            break;
+                                        }
+                                        else {
+                                            cout << "Please enter either \"Yes\" or \"No\" ";
+                                        }
+                                    }
+                                }
+                                else {
+                                    cout << "Please enter either \"Yes\" or \"No\" ";
+                                }
+                            }
+                        }
+
+                        else {
+                            cout << "Please enter a value between 1 and 13 ";
+                        }
+                    }
+                }
+            }
+            else if (decodeNow == "No" or decodeNow == "no" or decodeNow == "n") {
+                cout << "You have chosen to not decode the message.";
+            }
+            else {
+                cout << "Please enter \"Yes\" or \"No\"";
+            }
+            
         }
     }
 
+    else if (userChoice == "2") {
+        cout << "You have chosen to decrypt a message." << endl;
+        cin.ignore();
+        cout << "Enter the captured (encoded) message: ";
+        getline(cin, keyPhrase);
+
+        bool correct = false;
+
+        while (!correct) {
+            int guess;
+            cout << "Enter your guess for the shift value (1-13): ";
+            cin >> guess;
+            
+            while(guess < 1 || guess > 13) {
+                cout << "Invalid input. Enter a number between 1 and 13: ";
+                cin >> guess;
+            }
+
+            if (guess < 13) {
+                cout << "Decoding message using Caesar Cipher (shift value " << guess << " )" << endl;
+
+                CaesarCipher* decoder = new CaesarCipher();
+                decoder->setShiftValue(guess);
+
+                string attempt = decoder->decode(keyPhrase);
+
+                cout << "Encoded message: " << keyPhrase << endl;
+
+                cout << "Decoded message attempt: " << attempt << endl;
+
+                delete decoder;
+
+                string isCorrect;
+                cout << "Is the decoded message correct? (Yes/No): ";
+                cin >> isCorrect;
+
+                if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
+                cout << "Great job! You decoded the message.\n";
+                correct = true;
+                }
+                else {
+                    string tryAgain;
+                    cout << "Try another shift value? (Yes/No): ";
+                    cin >> tryAgain;
+
+                    if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
+                        cout << "Exiting...\n";
+                        break;
+                    }
+                }
+            }
+
+            else {
+                cout << "Decoding message using Rot13 Cipher (shift value " << guess << " )" << endl;
+
+                Rot13Cipher rottedCipher;
+
+                CaesarCipher* decoder = new CaesarCipher();
+                decoder->setShiftValue(guess);
+
+                string attempt = decoder->decode(keyPhrase);
+
+                cout << "Encoded message: " << keyPhrase << endl;
+
+                cout << "Decoded message attempt: " << attempt << endl;
+
+                delete decoder;
+
+                string isCorrect;
+                cout << "Is the decoded message correct? (Yes/No): ";
+                cin >> isCorrect;
+
+                if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
+                cout << "Great job! You decoded the message.\n";
+                correct = true;
+                }
+                else {
+                    string tryAgain;
+                    cout << "Try another shift value? (Yes/No): ";
+                    cin >> tryAgain;
+
+                    if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
+                        cout << "Exiting...\n";
+                        break;
+                    }
+                }
+            }
+        }
+    }
     return 0;
 }
