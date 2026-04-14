@@ -38,6 +38,7 @@ class CaesarCipher {
         }
 
     public:
+        // Sets the shift value
         void setShiftValue(int value) {
             shiftValue = value;
         }
@@ -92,6 +93,7 @@ int main()
 
             // Generate the encoded message and give it to the user
             CaesarCipher currentEncryption;
+            currentEncryption.setShiftValue(userShiftValue);
 
             // Ask the user if they wish to decrypt the recently encoded message
             string decodeNow = "Maybe";
@@ -111,8 +113,8 @@ int main()
                         if (decodeGuess > 0 or decodeGuess < 14) {
                             cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << "):" << endl;
                             string newDecryption;
-                            cout << "Encoded message: " << currentEncryption << endl;
-                            cout << "Decoded message: " << newDecryption << endl;
+                            cout << "Encoded message: " << currentEncryption.encode(keyPhrase) << endl;
+                            cout << "Decoded message: " << currentEncryption.decode(decodeGuess) << endl;
                         }
                         else {
                             cout << "Please enter a value between 1 and 13 ";
