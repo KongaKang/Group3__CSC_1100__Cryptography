@@ -1,7 +1,7 @@
 /******************************************************************************
 
 Cryptography Quest 3
-Names: Ethan Sovereign, Donovan Stukes, Giovanni Vega, Mohammed Ahmed, Victor Nzekwe, Nithin Suresh, Kenny Chanya
+Names: Ethan Sovereign, Donovan Stukes, Giovanni Vega , Mohammed Ahmed, Victor Nzekwe, Nithin Suresh, Kenny Chanya
 Braylen T
 *******************************************************************************/
 
@@ -84,7 +84,6 @@ int main()
             cout << "Enter the message to be encoded: ";
             cin.ignore();
             getline(cin, keyPhrase);
-            
             // Ask the user for a shift value
             cout << "Enter a shift value to encode the message accordingly: ";
             while (userShiftValue < 0 or userShiftValue > 14) {
@@ -95,46 +94,6 @@ int main()
                 else {
                     cout << "Please enter a shift value between 1 and 13. ";
                 }
-            }
-
-            // Generate the encoded message and give it to the user
-            CaesarCipher currentEncryption;
-            currentEncryption.setShiftValue(userShiftValue);
-            string hiddenMessage = currentEncryption.encrypt(keyPhrase);
-
-            // Ask the user if they wish to decrypt the recently encoded message
-            string decodeNow = "Maybe";
-            cout <<"Do you want to decode the recently encoded message?\nInput \"Yes\" or \"No\" ";
-           while (decodeNow != "Yes" && decodeNow != "No" &&
-        decodeNow != "yes" && decodeNow != "no" &&
-        decodeNow != "y"   && decodeNow != "n") {
-                cin >> decodeNow;
-                // Ask the user if they wish to decodde the message now
-                if (decodeNow == "Yes" or decodeNow == "yes" or decodeNow == "y") {
-                    int decodeGuess = -1;
-                    // Prompt the user for their shift value guess.
-                    cout << "Enter your guess for the shift value (1-13) to decode the message ";
-                    while (decodeGuess < 0 or decodeGuess > 14) {
-                        cin >> decodeGuess;
-
-                        if (decodeGuess >= 1 && decodeGuess <= 13) {
-                            cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << "):" << endl;
-                            currentEncryption.setShiftValue(decodeGuess);
-                            cout << "Encoded message: " << hiddenMessage << endl;
-                            cout << "Decoded message: " << currentEncryption.decode(keyPhrase) << endl;
-                        }
-                        else {
-                            cout << "Please enter a value between 1 and 13 ";
-                        }
-                    }
-                }
-                else if (decodeNow == "No" or decodeNow == "no" or decodeNow == "n") {
-                    cout << "You have chosen to not decode the message.";
-                }
-                else {
-                    cout << "Please enter \"Yes\" or \"No\"";
-                }
-                
             }
 
             // Generate the encoded message and give it to the user
