@@ -110,6 +110,7 @@ int main()
                 cin >> decodeNow;
                 // Ask the user if they wish to decodde the message now
                 if (decodeNow == "Yes" or decodeNow == "yes" or decodeNow == "y") {
+                    cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << endl;
 
                     // Prompt the user for their shift value guess.
                     bool isMessageDecoded = false;
