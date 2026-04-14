@@ -97,9 +97,10 @@ int main()
             string decodeNow = "Maybe";
             cout <<"Do you want to decode the recently encoded message?\nInput \"Yes\" or \"No\" ";
            while (decodeNow != "Yes" && decodeNow != "No" &&
-       decodeNow != "yes" && decodeNow != "no" &&
-       decodeNow != "y"   && decodeNow != "n") {
+        decodeNow != "yes" && decodeNow != "no" &&
+        decodeNow != "y"   && decodeNow != "n") {
                 cin >> decodeNow;
+                // Ask the user if they wish to decodde the message now
                 if (decodeNow == "Yes" or decodeNow != "yes" or decodeNow != "y") {
                     cout << "Enter your guess for the shift value (1-13) to decode the message ";
                 }
