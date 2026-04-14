@@ -128,7 +128,7 @@ int main()
                                 string isMessageCorrect = "Maybe";
                                 cout << "Is the decoded message correct?\nInput \"Yes\" or \"No\" ";
                                 while (isMessageCorrect != "Yes" or isMessageCorrect != "yes" or isMessageCorrect != "y"
-                            or isMessageCorrect != "No" or isMessageCorrect != "no" or isMessageCorrect != "n")
+                            or isMessageCorrect != "No" or isMessageCorrect != "no" or isMessageCorrect != "n") {
                                     cin >> isMessageCorrect;
                                     if (isMessageCorrect == "Yes" or isMessageCorrect == "yes" or isMessageCorrect == "y") {
                                         isMessageDecoded = true;
@@ -156,6 +156,7 @@ int main()
                                     else {
                                         cout << "Please enter either \"Yes\" or \"No\" ";
                                     }
+                                }
                             }
                             else {
                                 cout << "Please enter a value between 1 and 13 ";
