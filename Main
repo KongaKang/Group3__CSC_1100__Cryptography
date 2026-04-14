@@ -42,7 +42,7 @@ class CaesarCipher {
         void setShiftValue(int value) {
             shiftValue = value;
         }
-        string decode(const string& message) {
+        friend string decode(const string& message) {
             int oldShift = shiftValue;
 
             shiftValue = (26 - shiftValue) % 26;
