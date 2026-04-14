@@ -272,6 +272,12 @@ int main()
                     cout << "Is the decoded message correct? (Yes/No): ";
                     cin >> isCorrect;
 
+                    while (isCorrect != "Yes" and isCorrect != "yes" and isCorrect != "y" 
+                and isCorrect != "No" and isCorrect != "no" and isCorrect != "n") {
+                        cout << "Please enter either \"Yes\" or \"No\" ";
+                        cin >> isCorrect;
+                    }
+
                     if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
                     cout << "Great job! You decoded the message.\n";
                     correct = true;
@@ -280,6 +286,12 @@ int main()
                         string tryAgain;
                         cout << "Try another shift value? (Yes/No): ";
                         cin >> tryAgain;
+
+                        while (tryAgain != "Yes" and tryAgain != "yes" and tryAgain != "y" 
+                    and tryAgain != "No" and tryAgain != "no" and tryAgain != "n") {
+                            cout << "Please enter either \"Yes\" or \"No\" ";
+                            cin >> tryAgain;
+                        }
 
                         if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
                             cout << "Exiting...\n";
@@ -308,6 +320,12 @@ int main()
                     cout << "Is the decoded message correct? (Yes/No): ";
                     cin >> isCorrect;
 
+                    while (isCorrect != "Yes" and isCorrect != "yes" and isCorrect != "y" 
+                and isCorrect != "No" and isCorrect != "no" and isCorrect != "n") {
+                        cout << "Please enter either \"Yes\" or \"No\" ";
+                        cin >> isCorrect;
+                    }
+
                     if (isCorrect == "Yes" || isCorrect == "yes" || isCorrect == "y") {
                     cout << "Great job! You decoded the message.\n";
                     correct = true;
@@ -316,6 +334,12 @@ int main()
                         string tryAgain;
                         cout << "Try another shift value? (Yes/No): ";
                         cin >> tryAgain;
+
+                        while (tryAgain != "Yes" and tryAgain != "yes" and tryAgain != "y" 
+                    and tryAgain != "No" and tryAgain != "no" and tryAgain != "n") {
+                            cout << "Please enter either \"Yes\" or \"No\" ";
+                            cin >> tryAgain;
+                        }
 
                         if (tryAgain == "No" || tryAgain == "no" || tryAgain == "n") {
                             cout << "Exiting...\n";
