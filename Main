@@ -94,6 +94,7 @@ int main()
             // Generate the encoded message and give it to the user
             CaesarCipher currentEncryption;
             currentEncryption.setShiftValue(userShiftValue);
+            hiddenMessage = currentEncryption.encode(keyPhrase);
 
             // Ask the user if they wish to decrypt the recently encoded message
             string decodeNow = "Maybe";
@@ -112,9 +113,9 @@ int main()
 
                         if (decodeGuess > 0 or decodeGuess < 14) {
                             cout << "Decoding message using Caesar Cipher (shift value " << decodeGuess << "):" << endl;
-                            string newDecryption;
-                            cout << "Encoded message: " << currentEncryption.encode(keyPhrase) << endl;
-                            cout << "Decoded message: " << currentEncryption.decode(decodeGuess) << endl;
+                            currentEncryption.setShiftValue(decodeGuess);
+                            cout << "Encoded message: " << hiddenMessage << endl;
+                            cout << "Decoded message: " << currentEncryption.decode(keyPhrase) << endl;
                         }
                         else {
                             cout << "Please enter a value between 1 and 13 ";
