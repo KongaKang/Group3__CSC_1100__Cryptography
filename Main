@@ -138,6 +138,11 @@ int main()
                 int guess;
                 cout << "Enter your guess for the shift value (1-13): ";
                 cin >> guess;
+                
+                while(guess < 1 || guess > 13) {
+                    cout << "Invalid input. Enter a number between 1 and 13: ";
+                    cin >> guess;
+                }
 
                 CaesarCipher* decoder = new CaesarCipher();
                 decoder->setShiftValue(guess);
