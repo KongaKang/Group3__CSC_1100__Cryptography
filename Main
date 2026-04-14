@@ -104,7 +104,7 @@ int main()
         decodeNow != "y"   && decodeNow != "n") {
                 cin >> decodeNow;
                 // Ask the user if they wish to decodde the message now
-                if (decodeNow == "Yes" or decodeNow != "yes" or decodeNow != "y") {
+                if (decodeNow == "Yes" or decodeNow == "yes" or decodeNow == "y") {
                     int decodeGuess = -1;
                     // Prompt the user for their shift value guess.
                     cout << "Enter your guess for the shift value (1-13) to decode the message ";
@@ -122,7 +122,7 @@ int main()
                         }
                     }
                 }
-                else if (decodeNow == "No" or decodeNow != "no" or decodeNow != "n") {
+                else if (decodeNow == "No" or decodeNow == "no" or decodeNow == "n") {
                     cout << "You have chosen to not decode the message.";
                 }
                 else {
