@@ -149,7 +149,7 @@ int main()
                                                 break;
                                             }
                                             else if (anotherAttempt == "No" or anotherAttempt == "no" or anotherAttempt == "n") {
-                                                cout "\nUnderstood. Exiting...";"
+                                                cout "\nUnderstood. Exiting...";
                                                 isMessageDecoded = true;
                                                 break;
                                             }
