@@ -94,7 +94,7 @@ int main()
             // Generate the encoded message and give it to the user
             CaesarCipher currentEncryption;
             currentEncryption.setShiftValue(userShiftValue);
-            hiddenMessage = currentEncryption.encode(keyPhrase);
+            string hiddenMessage = currentEncryption.encode(keyPhrase);
 
             // Ask the user if they wish to decrypt the recently encoded message
             string decodeNow = "Maybe";
