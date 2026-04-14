@@ -110,11 +110,13 @@ int main()
                 cin >> decodeNow;
                 // Ask the user if they wish to decodde the message now
                 if (decodeNow == "Yes" or decodeNow == "yes" or decodeNow == "y") {
-                    int decodeGuess = -1;
 
                     // Prompt the user for their shift value guess.
                     bool isMessageDecoded = false;
                     while(isMessageDecoded == false) {
+
+                        //Prompt the user for their desired shift value
+                        int decodeGuess = -1;
                         cout << "Enter your guess for the shift value (1-13) to decode the message ";
                         while (decodeGuess < 0 or decodeGuess > 14) {
                             cin >> decodeGuess;
@@ -128,29 +130,31 @@ int main()
                                 // Ask the user if the decoded message is correct
                                 string isMessageCorrect = "Maybe";
                                 cout << "Is the decoded message correct?\nInput \"Yes\" or \"No\" ";
-                                while (isMessageCorrect != "Yes" or isMessageCorrect != "yes" or isMessageCorrect != "y"
-                            or isMessageCorrect != "No" or isMessageCorrect != "no" or isMessageCorrect != "n") {
+                                while (isMessageCorrect != "Yes" and isMessageCorrect != "yes" and isMessageCorrect != "y"
+                            and isMessageCorrect != "No" and isMessageCorrect != "no" and isMessageCorrect != "n") {
                                     cin >> isMessageCorrect;
                                     if (isMessageCorrect == "Yes" or isMessageCorrect == "yes" or isMessageCorrect == "y") {
                                         isMessageDecoded = true;
                                         cout << "Congratulations! You decoded the message correctly." << endl;
+                                        break;
                                     }
                                     // Ask the user if they wish to make another attempt at the decryption
                                     else if (isMessageCorrect == "No" or isMessageCorrect == "no" or isMessageCorrect == "n") {
                                         string anotherAttempt;
                                         cout << "Do you want to try with a different shift value? \nInput \"Yes\" or \"No\" ";
-                                        while (anotherAttempt != "Yes" or anotherAttempt != "yes" or anotherAttempt != "y"
-                                    or anotherAttempt != "No" or anotherAttempt != "no" or anotherAttempt != "n") {
+                                        while (anotherAttempt != "Yes" and anotherAttempt != "yes" and anotherAttempt != "y"
+                                    and anotherAttempt != "No" and anotherAttempt != "no" and anotherAttempt != "n") {
                                             cin >> anotherAttempt;
                                             if (anotherAttempt == "Yes" or anotherAttempt == "yes" or anotherAttempt == "y") {
-                                                isMessageDecoded = false;
+                                                break;
                                             }
                                             else if (anotherAttempt == "No" or anotherAttempt == "no" or anotherAttempt == "n") {
+                                                cout "\nUnderstood. Exiting...";"
                                                 isMessageDecoded = true;
-                                                cout << "";
+                                                break;
                                             }
                                             else {
-                                                cout << "Please enter wither \"Yes\" or \"No\" ";
+                                                cout << "Please enter either \"Yes\" or \"No\" ";
                                             }
                                         }
                                     }
