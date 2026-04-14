@@ -51,6 +51,7 @@ class CaesarCipher {
             shiftValue = oldShift;
             return decoded;
         }
+        // Get the encrypted message
         string encrypt(const string& message) {
             return encode(message);
         }
