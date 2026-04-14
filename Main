@@ -87,7 +87,7 @@ int main()
             cout << "Enter a shift value to encode the message accordingly: ";
             while (userShiftValue < 0 or userShiftValue > 14) {
                 cin >> userShiftValue;
-                if (userShiftValue > 0 or userShiftValue < 14) {
+                if (userShiftValue >= 1 && userShiftValue <= 13) {
                     cout << "You have chosen " << userShiftValue << " as your shift value." << endl;
                 }
                 else {
