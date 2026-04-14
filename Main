@@ -33,8 +33,8 @@ class CaesarCipher {
                 else {
                     encodedMessage += c;// this will leave non letters unchanged 
                 }
-                return encodedMessage;
             }
+                return encodedMessage;
         }
 
     public:
